@@ -1,4 +1,4 @@
-app/app_test.o: ..\AZURE_RTOS\App\app_test.c \
+app/app_lowpower.o: ..\AZURE_RTOS\App\app_lowpower.c \
   ..\AZURE_RTOS\App\app_azure_rtos.h \
   ..\AZURE_RTOS\App\app_azure_rtos_config.h ..\Core\Inc\app_threadx.h \
   ..\Middlewares\ST\threadx\common\inc\tx_api.h \
@@ -43,5 +43,4 @@ app/app_test.o: ..\AZURE_RTOS\App\app_test.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
-  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
-  ..\Third-Party\MultiButton\multi_button.h
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h

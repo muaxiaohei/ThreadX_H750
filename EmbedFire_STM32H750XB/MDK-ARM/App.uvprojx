@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32H750xx,TX_PORT_USE_BASEPRI,TX_PORT_BASEPRI=240,TX_INCLUDE_USER_DEFINE_FILE,TX_EXECUTION_PROFILE_ENABLE,TX_CORTEX_M_EPK</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../Third-Party/at24cxx;../AZURE_RTOS/App;../Middlewares/ST/threadx/common/inc/;../Middlewares/ST/threadx/ports/cortex_m7/ac6/inc/;../AZURE_RTOS/utility/execution_profile_kit</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../Third-Party/at24cxx;../AZURE_RTOS/App;../Middlewares/ST/threadx/common/inc/;../Middlewares/ST/threadx/ports/cortex_m7/ac6/inc/;../AZURE_RTOS/utility/execution_profile_kit;../Third-Party/MultiButton</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -753,26 +753,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Third-Party\at24cxx</GroupName>
-          <Files>
-            <File>
-              <FileName>driver_at24cxx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Third-Party\at24cxx\driver_at24cxx.c</FilePath>
-            </File>
-            <File>
-              <FileName>driver_at24cxx_basic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Third-Party\at24cxx\driver_at24cxx_basic.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32h750xb_driver_at24cxx_interface.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Third-Party\at24cxx\stm32h750xb_driver_at24cxx_interface.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Application/User/AZURE_RTOS/App</GroupName>
           <GroupOption>
             <CommonProperty>
@@ -845,9 +825,9 @@
           </GroupOption>
           <Files>
             <File>
-              <FileName>app_test.c</FileName>
+              <FileName>app_button.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\AZURE_RTOS\App\app_test.c</FilePath>
+              <FilePath>..\AZURE_RTOS\App\app_button.c</FilePath>
             </File>
             <File>
               <FileName>app_azure_rtos.c</FileName>
@@ -914,6 +894,36 @@
               <FileName>tx_execution_profile.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\AZURE_RTOS\utility\execution_profile_kit\tx_execution_profile.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Third-Party/MultiButton</GroupName>
+          <Files>
+            <File>
+              <FileName>multi_button.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Third-Party\MultiButton\multi_button.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Third-Party/at24cxx</GroupName>
+          <Files>
+            <File>
+              <FileName>driver_at24cxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Third-Party\at24cxx\driver_at24cxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>driver_at24cxx_basic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Third-Party\at24cxx\driver_at24cxx_basic.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32h750xb_driver_at24cxx_interface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Third-Party\at24cxx\stm32h750xb_driver_at24cxx_interface.c</FilePath>
             </File>
           </Files>
         </Group>

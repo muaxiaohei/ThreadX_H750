@@ -62,15 +62,17 @@ static void MPU_Config(void);
 /* USER CODE BEGIN 0 */
 static void vtor_config(void)
 {
-    SCB->VTOR = QSPI_BASE;		// 重定位中断向量表
+	/* relocate interruption vector table */
+    SCB->VTOR = QSPI_BASE;
 
-    /* clear all NVIC Enable and Pending registers */
+    /* clear all NVIC enable and pending registers */
     for(uint8_t i = 0; i < 8; i++)
     {
         NVIC->ICER[i] = 0xFFFFFFFF;
         NVIC->ICPR[i] = 0xFFFFFFFF;
     }
 
+	/* re-enable interruption */
     __enable_irq();
     __set_PRIMASK(0);
 }

@@ -57,9 +57,14 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define USR_KEY_SW2_Pin GPIO_PIN_13
+#define USR_KEY_SW2_GPIO_Port GPIOC
+#define USR_KEY_SW1_Pin GPIO_PIN_0
+#define USR_KEY_SW1_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
-
+#define USR_KEY_SW2_READ()	HAL_GPIO_ReadPin(USR_KEY_SW2_GPIO_Port, USR_KEY_SW2_Pin)
+#define USR_KEY_SW1_READ()	HAL_GPIO_ReadPin(USR_KEY_SW1_GPIO_Port, USR_KEY_SW1_Pin)
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

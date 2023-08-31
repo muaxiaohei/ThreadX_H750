@@ -62,15 +62,17 @@ static void MPU_Config(void);
 /* USER CODE BEGIN 0 */
 static void vtor_config(void)
 {
-    SCB->VTOR = QSPI_BASE;		// 重定位中断向量表
+    /* relocate interruption vector table */
+    SCB->VTOR = QSPI_BASE;
 
-    /* clear all NVIC Enable and Pending registers */
+    /* clear all NVIC enable and pending registers */
     for(uint8_t i = 0; i < 8; i++)
     {
         NVIC->ICER[i] = 0xFFFFFFFF;
         NVIC->ICPR[i] = 0xFFFFFFFF;
     }
 
+    /* re-enable interruption */
     __enable_irq();
     __set_PRIMASK(0);
 }
@@ -198,35 +200,34 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-/* ------------------通过重定向将printf函数映射到串口1上-------------------*/
+/* ------------------redirect printf to uart-------------------*/
 #if !defined(__MICROLIB)
-//#pragma import(__use_no_semihosting)
-__asm (".global __use_no_semihosting\n\t");
-void _sys_exit(int x) //避免使用半主机模式
+#if defined (__GNUC__) || defined (__clang__)
+	__asm (".global __use_no_semihosting\n\t");
+#elif defined (__CC_ARM)
+	#pragma import(__use_no_semihosting)
+#endif
+
+void _sys_exit(int x)
 {
     x = x;
 }
-//__use_no_semihosting was requested, but _ttywrch was
-void _ttywrch(int ch)
+
+void _ttywrch(int ch)	//__use_no_semihosting was requested, but _ttywrch was
 {
     ch = ch;
 }
-//struct __FILE
-//{
-//  int handle;
-//};
-FILE __stdout;
 
+FILE __stdout;
 #endif
 
-#if defined ( __GNUC__ ) && !defined (__clang__)
+#if defined (__GNUC__) && !defined (__clang__)
 #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
 #else
 #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
 #endif
 PUTCHAR_PROTOTYPE
 {
-    /* 实现串口发送一个字节数据的函数 */
     HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 1000);
     return ch;
 }

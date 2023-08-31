@@ -278,6 +278,23 @@
 #define TX_DISABLE_INLINE
 
 /* USER CODE BEGIN 2 */
+/* Define the LowPower macros and flags */
+/* Define a macro that sets up a low power clock and keep track of time */
+/*#define TX_LOW_POWER_TIMER_SETUP */
+
+/* Define the TX_LOW_POWER_TICKLESS to disable the internal ticks */
+#define TX_LOW_POWER_TICKLESS
+
+/* A user defined macro to make the system enter low power mode */
+extern void app_threadx_lowpower_enter(void);
+#define TX_LOW_POWER_USER_ENTER app_threadx_lowpower_enter()
+
+/* A user defined macro to make the system exit low power mode */
+extern void app_threadx_lowpower_exit(void);
+#define TX_LOW_POWER_USER_EXIT app_threadx_lowpower_exit()
+
+/* User's low-power macro to obtain the amount of time (in ticks) the system has been in low power mode */
+/*#define TX_LOW_POWER_USER_TIMER_ADJUST */
 
 /* USER CODE END 2 */
 

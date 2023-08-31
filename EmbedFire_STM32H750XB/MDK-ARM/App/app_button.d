@@ -1,4 +1,4 @@
-app/app_test.o: ..\AZURE_RTOS\App\app_test.c \
+app/app_button.o: ..\AZURE_RTOS\App\app_button.c \
   ..\AZURE_RTOS\App\app_azure_rtos.h \
   ..\AZURE_RTOS\App\app_azure_rtos_config.h ..\Core\Inc\app_threadx.h \
   ..\Middlewares\ST\threadx\common\inc\tx_api.h \
