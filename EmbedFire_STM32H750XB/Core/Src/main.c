@@ -19,6 +19,11 @@
 /* Includes ------------------------------------------------------------------*/
 #include "app_threadx.h"
 #include "main.h"
+#include "adc.h"
+#include "dma.h"
+#include "eth.h"
+#include "sdmmc.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -76,6 +81,8 @@ static void vtor_config(void)
     __enable_irq();
     __set_PRIMASK(0);
 }
+
+uint32_t raw_data[4] __attribute__((aligned(32)));
 /* USER CODE END 0 */
 
 /**
@@ -116,7 +123,12 @@ int main(void)
 
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
+    MX_DMA_Init();
+    MX_SDMMC1_SD_Init();
     MX_USART1_UART_Init();
+    MX_ADC3_Init();
+    MX_TIM6_Init();
+    MX_ETH_Init();
     /* USER CODE BEGIN 2 */
     at24cxx_basic_init(AT24C02, AT24CXX_ADDRESS_A000);
 
@@ -170,7 +182,7 @@ void SystemClock_Config(void)
     RCC_OscInitStruct.PLL.PLLM = 5;
     RCC_OscInitStruct.PLL.PLLN = 192;
     RCC_OscInitStruct.PLL.PLLP = 2;
-    RCC_OscInitStruct.PLL.PLLQ = 2;
+    RCC_OscInitStruct.PLL.PLLQ = 4;
     RCC_OscInitStruct.PLL.PLLR = 2;
     RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_2;
     RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
@@ -203,9 +215,9 @@ void SystemClock_Config(void)
 /* ------------------redirect printf to uart-------------------*/
 #if !defined(__MICROLIB)
 #if defined (__GNUC__) || defined (__clang__)
-	__asm (".global __use_no_semihosting\n\t");
+__asm (".global __use_no_semihosting\n\t");
 #elif defined (__CC_ARM)
-	#pragma import(__use_no_semihosting)
+#pragma import(__use_no_semihosting)
 #endif
 
 void _sys_exit(int x)
@@ -218,7 +230,7 @@ void _ttywrch(int ch)	//__use_no_semihosting was requested, but _ttywrch was
     ch = ch;
 }
 
-FILE __stdout;
+FILE __stdout;		// comment this code in GNU environment
 #endif
 
 #if defined (__GNUC__) && !defined (__clang__)
@@ -297,20 +309,9 @@ void MPU_Config(void)
 
     /** Initializes and configures the Region and the memory to be protected
     */
-    MPU_InitStruct.Number = MPU_REGION_NUMBER5;
-    MPU_InitStruct.BaseAddress = 0x60000000;
-    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
-    MPU_InitStruct.IsCacheable = MPU_ACCESS_NOT_CACHEABLE;
-
-    HAL_MPU_ConfigRegion(&MPU_InitStruct);
-
-    /** Initializes and configures the Region and the memory to be protected
-    */
     MPU_InitStruct.Number = MPU_REGION_NUMBER6;
-    MPU_InitStruct.BaseAddress = 0xC0000000;
-    MPU_InitStruct.Size = MPU_REGION_SIZE_32MB;
-    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
-    MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
+    MPU_InitStruct.BaseAddress = 0xD0000000;
+    MPU_InitStruct.Size = MPU_REGION_SIZE_64MB;
 
     HAL_MPU_ConfigRegion(&MPU_InitStruct);
     /* Enables the MPU */
@@ -348,6 +349,7 @@ void Error_Handler(void)
     /* USER CODE BEGIN Error_Handler_Debug */
     /* User can add his own implementation to report the HAL error return state */
     __disable_irq();
+    printf("error looping...\r\n");
     while (1)
     {
     }

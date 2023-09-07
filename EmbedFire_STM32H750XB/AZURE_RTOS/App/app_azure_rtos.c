@@ -164,6 +164,7 @@ VOID tx_application_define(VOID *first_unused_memory)
     (void)first_unused_memory;
 	if(TX_SUCCESS != tx_mutex_create(&tx_kprintf_lock, "kprint", TX_INHERIT))	Error_Handler();
 	app_button_thread_init();
+	app_adc_thread_init();
   /* USER CODE END DYNAMIC_MEM_ALLOC */
 #endif
 

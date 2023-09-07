@@ -59,12 +59,29 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define USR_KEY_SW2_Pin GPIO_PIN_13
 #define USR_KEY_SW2_GPIO_Port GPIOC
+#define WL_REG_ON_Pin GPIO_PIN_2
+#define WL_REG_ON_GPIO_Port GPIOC
 #define USR_KEY_SW1_Pin GPIO_PIN_0
 #define USR_KEY_SW1_GPIO_Port GPIOA
+#define LED_G_Pin GPIO_PIN_1
+#define LED_G_GPIO_Port GPIOB
+#define LED_B_Pin GPIO_PIN_3
+#define LED_B_GPIO_Port GPIOA
+#define LED_R_Pin GPIO_PIN_0
+#define LED_R_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 #define USR_KEY_SW2_READ()	HAL_GPIO_ReadPin(USR_KEY_SW2_GPIO_Port, USR_KEY_SW2_Pin)
 #define USR_KEY_SW1_READ()	HAL_GPIO_ReadPin(USR_KEY_SW1_GPIO_Port, USR_KEY_SW1_Pin)
+
+#define LED_G_ON()		HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_RESET)
+#define LED_G_OFF()		HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_SET)
+
+#define LED_B_ON()		HAL_GPIO_WritePin(LED_B_GPIO_Port, LED_B_Pin, GPIO_PIN_RESET)
+#define LED_B_OFF()		HAL_GPIO_WritePin(LED_B_GPIO_Port, LED_B_Pin, GPIO_PIN_SET)
+
+#define LED_R_ON()		HAL_GPIO_WritePin(LED_R_GPIO_Port, LED_R_Pin, GPIO_PIN_RESET)
+#define LED_R_OFF()		HAL_GPIO_WritePin(LED_R_GPIO_Port, LED_R_Pin, GPIO_PIN_SET)
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
