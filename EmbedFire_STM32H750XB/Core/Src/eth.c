@@ -212,7 +212,10 @@ HAL_StatusTypeDef lan8720a_init(ETH_HandleTypeDef *heth)
 	uint32_t phy_reg = 0, timeout = 0;
 	
 	/* 1.soft reset lan8720a */
-//https://doc.embedfire.com/mcu/stm32/h743prov/hal/zh/latest/book/ETH.html#eth-6
+//	if(HAL_ETH_WritePHYRegister(heth, LAN8720A_PHY_ADDRESS, PHY_BCR, PHY_RESET) != HAL_OK)
+//	{
+//	
+//	}
 	
 	return HAL_OK;
 }

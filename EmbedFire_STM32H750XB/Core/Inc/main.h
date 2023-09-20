@@ -59,10 +59,16 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define USR_KEY_SW2_Pin GPIO_PIN_13
 #define USR_KEY_SW2_GPIO_Port GPIOC
+#define TS_RST_Pin GPIO_PIN_7
+#define TS_RST_GPIO_Port GPIOG
+#define TS_IIC_INT_Pin GPIO_PIN_3
+#define TS_IIC_INT_GPIO_Port GPIOG
 #define WL_REG_ON_Pin GPIO_PIN_2
 #define WL_REG_ON_GPIO_Port GPIOC
 #define USR_KEY_SW1_Pin GPIO_PIN_0
 #define USR_KEY_SW1_GPIO_Port GPIOA
+#define LCD_BL_Pin GPIO_PIN_13
+#define LCD_BL_GPIO_Port GPIOD
 #define LED_G_Pin GPIO_PIN_1
 #define LED_G_GPIO_Port GPIOB
 #define LED_B_Pin GPIO_PIN_3
@@ -82,6 +88,9 @@ void Error_Handler(void);
 
 #define LED_R_ON()		HAL_GPIO_WritePin(LED_R_GPIO_Port, LED_R_Pin, GPIO_PIN_RESET)
 #define LED_R_OFF()		HAL_GPIO_WritePin(LED_R_GPIO_Port, LED_R_Pin, GPIO_PIN_SET)
+
+#define LCD_BL_ON()		HAL_GPIO_WritePin(LCD_BL_GPIO_Port, LCD_BL_Pin, GPIO_PIN_SET)
+#define LCD_BL_OFF()	HAL_GPIO_WritePin(LCD_BL_GPIO_Port, LCD_BL_Pin, GPIO_PIN_RESET)
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

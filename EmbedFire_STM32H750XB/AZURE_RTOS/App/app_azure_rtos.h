@@ -55,6 +55,7 @@ void tx_kprintf(const char *fmt, ...);
 
 UINT app_button_thread_init(VOID);
 UINT app_adc_thread_init(VOID);
+UINT app_idle_thread_init(VOID);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

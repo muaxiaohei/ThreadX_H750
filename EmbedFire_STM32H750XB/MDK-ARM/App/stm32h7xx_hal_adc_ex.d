@@ -24,6 +24,7 @@ app/stm32h7xx_hal_adc_ex.o: \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dma.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dma_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_mdma.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dma2d.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_eth.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_eth_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_exti.h \
@@ -36,8 +37,13 @@ app/stm32h7xx_hal_adc_ex.o: \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_hsem.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_i2c.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_i2c_ex.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_iwdg.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_ltdc.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_ltdc_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pwr.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pwr_ex.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rtc.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rtc_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_sd.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_sdmmc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_delayblock.h \

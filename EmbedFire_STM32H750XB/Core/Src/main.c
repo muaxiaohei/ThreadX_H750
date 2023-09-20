@@ -21,7 +21,12 @@
 #include "main.h"
 #include "adc.h"
 #include "dma.h"
+#include "dma2d.h"
 #include "eth.h"
+#include "i2c.h"
+#include "iwdg.h"
+#include "ltdc.h"
+#include "rtc.h"
 #include "sdmmc.h"
 #include "tim.h"
 #include "usart.h"
@@ -81,8 +86,6 @@ static void vtor_config(void)
     __enable_irq();
     __set_PRIMASK(0);
 }
-
-uint32_t raw_data[4] __attribute__((aligned(32)));
 /* USER CODE END 0 */
 
 /**
@@ -124,14 +127,19 @@ int main(void)
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
     MX_DMA_Init();
-    MX_SDMMC1_SD_Init();
     MX_USART1_UART_Init();
     MX_ADC3_Init();
-    MX_TIM6_Init();
     MX_ETH_Init();
+    MX_SDMMC1_SD_Init();
+    MX_TIM6_Init();
+    MX_I2C2_Init();
+    MX_LTDC_Init();
+    MX_DMA2D_Init();
+    MX_RTC_Init();
+    MX_IWDG1_Init();
     /* USER CODE BEGIN 2 */
     at24cxx_basic_init(AT24C02, AT24CXX_ADDRESS_A000);
-
+    LCD_BL_ON();
     /* USER CODE END 2 */
 
     MX_ThreadX_Init();
@@ -172,11 +180,19 @@ void SystemClock_Config(void)
 
     while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
 
+    /** Configure LSE Drive Capability
+    */
+    HAL_PWR_EnableBkUpAccess();
+    __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
+
     /** Initializes the RCC Oscillators according to the specified parameters
     * in the RCC_OscInitTypeDef structure.
     */
-    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI | RCC_OSCILLATORTYPE_HSE
+                                       | RCC_OSCILLATORTYPE_LSE;
     RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+    RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+    RCC_OscInitStruct.LSIState = RCC_LSI_ON;
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
     RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
     RCC_OscInitStruct.PLL.PLLM = 5;
@@ -225,7 +241,7 @@ void _sys_exit(int x)
     x = x;
 }
 
-void _ttywrch(int ch)	//__use_no_semihosting was requested, but _ttywrch was
+void _ttywrch(int ch)	//__use_no_semihosting was requested, _ttywrch was
 {
     ch = ch;
 }

@@ -58,18 +58,19 @@ static TX_BYTE_POOL tx_app_byte_pool;
 
 /* USER CODE BEGIN PV */
 static TX_MUTEX tx_kprintf_lock;
-static char printf_buf[PRINT_BUF_MAX_SIZE + 1];			// 一次最多打印
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN PFP */
 /**
   * @brief  Thread-Safe Printf
-  * @param  used as printf
+  * @param  used as printf, define dynamic and static buffer for printf
   * @retval None
   */
 void tx_kprintf(const char *fmt, ...)
 {
+#if 0
+	static char printf_buf[PRINT_BUF_MAX_SIZE + 1];			// printf max size once
     size_t len = 0;
 
     va_list args;
@@ -83,6 +84,19 @@ void tx_kprintf(const char *fmt, ...)
     tx_mutex_get(&tx_kprintf_lock, TX_WAIT_FOREVER);
     printf("%s", printf_buf);
     tx_mutex_put(&tx_kprintf_lock);
+#else
+	
+    va_list args;
+	
+	va_start(args, fmt);
+	{
+		tx_mutex_get(&tx_kprintf_lock, TX_WAIT_FOREVER);
+		vfprintf(&__stdout, fmt, args);
+		tx_mutex_put(&tx_kprintf_lock);
+	}
+	va_end(args);
+	
+#endif
 }
 
 /* USER CODE END PFP */
@@ -162,9 +176,10 @@ VOID tx_application_define(VOID *first_unused_memory)
 
   /* USER CODE BEGIN DYNAMIC_MEM_ALLOC */
     (void)first_unused_memory;
-	if(TX_SUCCESS != tx_mutex_create(&tx_kprintf_lock, "kprint", TX_INHERIT))	Error_Handler();
-	app_button_thread_init();
-	app_adc_thread_init();
+    if(TX_SUCCESS != tx_mutex_create(&tx_kprintf_lock, "kprint", TX_INHERIT))	Error_Handler();
+    app_button_thread_init();
+    app_adc_thread_init();
+	app_idle_thread_init();
   /* USER CODE END DYNAMIC_MEM_ALLOC */
 #endif
 

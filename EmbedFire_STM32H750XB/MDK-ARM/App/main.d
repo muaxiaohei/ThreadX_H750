@@ -29,6 +29,7 @@ app/main.o: ..\Core\Src\main.c ..\Core\Inc\app_threadx.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dma.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dma_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_mdma.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dma2d.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_eth.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_eth_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_exti.h \
@@ -41,8 +42,13 @@ app/main.o: ..\Core\Src\main.c ..\Core\Inc\app_threadx.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_hsem.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_i2c.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_i2c_ex.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_iwdg.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_ltdc.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_ltdc_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pwr.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pwr_ex.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rtc.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rtc_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_sd.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_sdmmc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_delayblock.h \
@@ -51,9 +57,10 @@ app/main.o: ..\Core\Src\main.c ..\Core\Inc\app_threadx.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
-  ..\Core\Inc\adc.h ..\Core\Inc\dma.h ..\Core\Inc\eth.h \
-  ..\Core\Inc\sdmmc.h ..\Core\Inc\tim.h ..\Core\Inc\usart.h \
-  ..\Core\Inc\gpio.h \
+  ..\Core\Inc\adc.h ..\Core\Inc\dma.h ..\Core\Inc\dma2d.h \
+  ..\Core\Inc\eth.h ..\Core\Inc\i2c.h ..\Core\Inc\iwdg.h \
+  ..\Core\Inc\ltdc.h ..\Core\Inc\rtc.h ..\Core\Inc\sdmmc.h \
+  ..\Core\Inc\tim.h ..\Core\Inc\usart.h ..\Core\Inc\gpio.h \
   D:\Program\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   ..\Core\Inc\dwt.h ..\Third-Party\at24cxx\driver_at24cxx_basic.h \
   ..\Third-Party\at24cxx\driver_at24cxx_interface.h \
