@@ -49,6 +49,7 @@ LR_IROM1 0x90000000 0x00800000  {    	; load region size_region
 	
 	RW_IRAM8 0xD0000000 UNINIT 0x02000000  {  ; RW data - 32MB SDRAM(0xD0000000)
 		*(.SDRAM)
+	}
 		
 	RW_IRAM9 0xD2000000 UNINIT 0x02000000  {  ; RW data - 32MB SDRAM(0xD2000000) using for ltdc
 		*(.SDRAM_LTDC)

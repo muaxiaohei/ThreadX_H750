@@ -37,6 +37,8 @@ app/main.o: ..\Core\Src\main.c ..\Core\Inc\app_threadx.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_adc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_adc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_adc_ex.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_crc.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_crc_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_flash.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_flash_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_hsem.h \
@@ -57,10 +59,11 @@ app/main.o: ..\Core\Src\main.c ..\Core\Inc\app_threadx.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
-  ..\Core\Inc\adc.h ..\Core\Inc\dma.h ..\Core\Inc\dma2d.h \
-  ..\Core\Inc\eth.h ..\Core\Inc\i2c.h ..\Core\Inc\iwdg.h \
-  ..\Core\Inc\ltdc.h ..\Core\Inc\rtc.h ..\Core\Inc\sdmmc.h \
-  ..\Core\Inc\tim.h ..\Core\Inc\usart.h ..\Core\Inc\gpio.h \
+  ..\Core\Inc\adc.h ..\Core\Inc\crc.h ..\Core\Inc\dma.h \
+  ..\Core\Inc\dma2d.h ..\Core\Inc\eth.h ..\Core\Inc\i2c.h \
+  ..\Core\Inc\iwdg.h ..\Core\Inc\ltdc.h ..\Core\Inc\rtc.h \
+  ..\Core\Inc\sdmmc.h ..\Core\Inc\tim.h ..\Core\Inc\usart.h \
+  ..\Core\Inc\gpio.h \
   D:\Program\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   ..\Core\Inc\dwt.h ..\Third-Party\at24cxx\driver_at24cxx_basic.h \
   ..\Third-Party\at24cxx\driver_at24cxx_interface.h \

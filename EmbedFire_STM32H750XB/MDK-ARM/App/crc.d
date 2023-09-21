@@ -1,5 +1,4 @@
-app/stm32h7xx_hal_tim_ex.o: \
-  ..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_tim_ex.c \
+app/crc.o: ..\Core\Src\crc.c ..\Core\Inc\crc.h ..\Core\Inc\main.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
   ..\Core\Inc\stm32h7xx_hal_conf.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h \
@@ -53,4 +52,5 @@ app/stm32h7xx_hal_tim_ex.o: \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
-  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
+  D:\Program\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h

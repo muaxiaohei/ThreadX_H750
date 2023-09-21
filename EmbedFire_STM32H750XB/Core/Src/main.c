@@ -20,6 +20,7 @@
 #include "app_threadx.h"
 #include "main.h"
 #include "adc.h"
+#include "crc.h"
 #include "dma.h"
 #include "dma2d.h"
 #include "eth.h"
@@ -137,6 +138,7 @@ int main(void)
     MX_DMA2D_Init();
     MX_RTC_Init();
     MX_IWDG1_Init();
+    MX_CRC_Init();
     /* USER CODE BEGIN 2 */
     at24cxx_basic_init(AT24C02, AT24CXX_ADDRESS_A000);
     LCD_BL_ON();
