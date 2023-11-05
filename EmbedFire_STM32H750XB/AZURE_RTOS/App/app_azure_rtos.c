@@ -36,7 +36,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define PRINT_BUF_MAX_SIZE			1024
+#define PRINT_BUF_MAX_SIZE          1024
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -70,7 +70,7 @@ static TX_MUTEX tx_kprintf_lock;
 void tx_kprintf(const char *fmt, ...)
 {
 #if 0
-	static char printf_buf[PRINT_BUF_MAX_SIZE + 1];			// printf max size once
+    static char printf_buf[PRINT_BUF_MAX_SIZE + 1];         // printf max size once
     size_t len = 0;
 
     va_list args;
@@ -79,23 +79,23 @@ void tx_kprintf(const char *fmt, ...)
     len = vsnprintf(printf_buf, PRINT_BUF_MAX_SIZE, fmt, args);
     va_end(args);
 
-    if (len > PRINT_BUF_MAX_SIZE)	len = PRINT_BUF_MAX_SIZE;
+    if (len > PRINT_BUF_MAX_SIZE)   len = PRINT_BUF_MAX_SIZE;
 
     tx_mutex_get(&tx_kprintf_lock, TX_WAIT_FOREVER);
     printf("%s", printf_buf);
     tx_mutex_put(&tx_kprintf_lock);
 #else
-	
+
     va_list args;
-	
-	va_start(args, fmt);
-	{
-		tx_mutex_get(&tx_kprintf_lock, TX_WAIT_FOREVER);
-		vfprintf(&__stdout, fmt, args);
-		tx_mutex_put(&tx_kprintf_lock);
-	}
-	va_end(args);
-	
+
+    va_start(args, fmt);
+    {
+        tx_mutex_get(&tx_kprintf_lock, TX_WAIT_FOREVER);
+        vfprintf(&__stdout, fmt, args);
+        tx_mutex_put(&tx_kprintf_lock);
+    }
+    va_end(args);
+
 #endif
 }
 
@@ -132,7 +132,7 @@ VOID tx_application_define(VOID *first_unused_memory)
     if (status != TX_SUCCESS)
     {
       /* USER CODE BEGIN  App_ThreadX_Init_Error */
-            while(1)
+            while (1)
             {
             }
       /* USER CODE END  App_ThreadX_Init_Error */
@@ -176,10 +176,12 @@ VOID tx_application_define(VOID *first_unused_memory)
 
   /* USER CODE BEGIN DYNAMIC_MEM_ALLOC */
     (void)first_unused_memory;
-    if(TX_SUCCESS != tx_mutex_create(&tx_kprintf_lock, "kprint", TX_INHERIT))	Error_Handler();
-    app_button_thread_init();
+    if (TX_SUCCESS != tx_mutex_create(&tx_kprintf_lock, "kprint", TX_INHERIT))   Error_Handler();
+
+    app_idle_thread_init();
+    app_io_thread_init();
     app_adc_thread_init();
-	app_idle_thread_init();
+	app_mb_thread_init();
   /* USER CODE END DYNAMIC_MEM_ALLOC */
 #endif
 

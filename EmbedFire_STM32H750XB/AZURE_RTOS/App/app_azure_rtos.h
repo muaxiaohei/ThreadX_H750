@@ -36,7 +36,13 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-
+typedef struct sys_vol_info_s
+{
+    double ad_res;
+    double vbat;
+    double temp;
+    double verf;
+} sys_vol_info_t;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
@@ -53,9 +59,10 @@ extern "C" {
 /* USER CODE BEGIN EFP */
 void tx_kprintf(const char *fmt, ...);
 
-UINT app_button_thread_init(VOID);
+UINT app_io_thread_init(VOID);
 UINT app_adc_thread_init(VOID);
 UINT app_idle_thread_init(VOID);
+UINT app_mb_thread_init(VOID);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

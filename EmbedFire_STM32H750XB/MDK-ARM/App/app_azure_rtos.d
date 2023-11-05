@@ -3,9 +3,8 @@ app/app_azure_rtos.o: ..\AZURE_RTOS\App\app_azure_rtos.c \
   ..\AZURE_RTOS\App\app_azure_rtos_config.h ..\Core\Inc\app_threadx.h \
   ..\Middlewares\ST\threadx\common\inc\tx_api.h \
   ..\Middlewares\ST\threadx\ports\cortex_m7\ac6\inc\tx_port.h \
-  ..\Core\Inc\tx_user.h \
-  D:\Program\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
-  D:\Program\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\Core\Inc\tx_user.h D:\Program\KEIL\Compiler\AC6.21\include\stdlib.h \
+  D:\Program\KEIL\Compiler\AC6.21\include\string.h \
   ..\AZURE_RTOS\utility\execution_profile_kit\tx_execution_profile.h \
   ..\Core\Inc\main.h ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
   ..\Core\Inc\stm32h7xx_hal_conf.h \
@@ -14,17 +13,17 @@ app/app_azure_rtos.o: ..\AZURE_RTOS\App\app_azure_rtos.c \
   ..\Drivers\CMSIS\Device\ST\STM32H7xx\Include\stm32h7xx.h \
   ..\Drivers\CMSIS\Device\ST\STM32H7xx\Include\stm32h750xx.h \
   ..\Drivers\CMSIS\Include\core_cm7.h \
-  D:\Program\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  ..\Drivers\CMSIS\Include\cmsis_version.h \
-  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
-  ..\Drivers\CMSIS\Include\cmsis_armclang.h \
-  D:\Program\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
-  D:\Program\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_acle.h \
-  ..\Drivers\CMSIS\Include\mpu_armv7.h \
+  D:\Program\KEIL\Compiler\AC6.21\include\stdint.h \
+  F:\3.git\1.Github\ThreadX_H750\EmbedFire_STM32H750XB\Drivers\CMSIS\Include\cmsis_version.h \
+  F:\3.git\1.Github\ThreadX_H750\EmbedFire_STM32H750XB\Drivers\CMSIS\Include\cmsis_compiler.h \
+  F:\3.git\1.Github\ThreadX_H750\EmbedFire_STM32H750XB\Drivers\CMSIS\Include\cmsis_armclang.h \
+  D:\Program\KEIL\Compiler\AC6.21\include\arm_compat.h \
+  D:\Program\KEIL\Compiler\AC6.21\include\arm_acle.h \
+  F:\3.git\1.Github\ThreadX_H750\EmbedFire_STM32H750XB\Drivers\CMSIS\Include\mpu_armv7.h \
   ..\Drivers\CMSIS\Device\ST\STM32H7xx\Include\system_stm32h7xx.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
-  D:\Program\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
-  D:\Program\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h \
+  D:\Program\KEIL\Compiler\AC6.21\include\stddef.h \
+  D:\Program\KEIL\Compiler\AC6.21\include\math.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_gpio.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_gpio_ex.h \
@@ -39,8 +38,6 @@ app/app_azure_rtos.o: ..\AZURE_RTOS\App\app_azure_rtos.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_adc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_adc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_adc_ex.h \
-  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_crc.h \
-  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_crc_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_flash.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_flash_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_hsem.h \
@@ -53,13 +50,9 @@ app/app_azure_rtos.o: ..\AZURE_RTOS\App\app_azure_rtos.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pwr_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rtc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rtc_ex.h \
-  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_sd.h \
-  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_sdmmc.h \
-  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_delayblock.h \
-  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_sd_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
-  D:\Program\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
-  D:\Program\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h
+  D:\Program\KEIL\Compiler\AC6.21\include\stdarg.h \
+  D:\Program\KEIL\Compiler\AC6.21\include\stdio.h

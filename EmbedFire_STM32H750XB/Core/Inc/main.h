@@ -53,7 +53,7 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+extern __attribute__((aligned(32), section(".SDRAM_LTDC"))) unsigned long _ac1696356583[];
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -67,8 +67,6 @@ void Error_Handler(void);
 #define WL_REG_ON_GPIO_Port GPIOC
 #define USR_KEY_SW1_Pin GPIO_PIN_0
 #define USR_KEY_SW1_GPIO_Port GPIOA
-#define LCD_BL_Pin GPIO_PIN_13
-#define LCD_BL_GPIO_Port GPIOD
 #define LED_G_Pin GPIO_PIN_1
 #define LED_G_GPIO_Port GPIOB
 #define LED_B_Pin GPIO_PIN_3
@@ -89,8 +87,8 @@ void Error_Handler(void);
 #define LED_R_ON()		HAL_GPIO_WritePin(LED_R_GPIO_Port, LED_R_Pin, GPIO_PIN_RESET)
 #define LED_R_OFF()		HAL_GPIO_WritePin(LED_R_GPIO_Port, LED_R_Pin, GPIO_PIN_SET)
 
-#define LCD_BL_ON()		HAL_GPIO_WritePin(LCD_BL_GPIO_Port, LCD_BL_Pin, GPIO_PIN_SET)
-#define LCD_BL_OFF()	HAL_GPIO_WritePin(LCD_BL_GPIO_Port, LCD_BL_Pin, GPIO_PIN_RESET)
+//#define LCD_BL_ON()		HAL_GPIO_WritePin(LCD_BL_GPIO_Port, LCD_BL_Pin, GPIO_PIN_SET)
+//#define LCD_BL_OFF()	HAL_GPIO_WritePin(LCD_BL_GPIO_Port, LCD_BL_Pin, GPIO_PIN_RESET)
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

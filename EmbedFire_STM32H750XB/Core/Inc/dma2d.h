@@ -42,7 +42,16 @@ extern DMA2D_HandleTypeDef hdma2d;
 void MX_DMA2D_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void __dma2d_fill(void *dst, uint32_t x_size, uint32_t y_size,
+					uint32_t offline, uint32_t color, uint32_t pixelformat);
+void __dma2d_copy(void *src, void *dst, uint32_t x_size, uint32_t y_size,
+                  uint32_t src_offline, uint32_t dst_offline, uint32_t pixelformat);
+void __dma2d_mixcolorsbulk(void *src, void *dst, uint32_t x_size, uint32_t y_size,
+							uint32_t src_offline, uint32_t dst_offline, uint8_t alpha);
+void __dma2d_alphablendingbulk(void *fg_src, void *bg_src, void *dst, uint32_t x_size, uint32_t y_size,
+								uint32_t fg_offline, uint32_t bg_offline, uint32_t dst_offline);
+void __dma2d_drawalpha_bitmap(void *src, void *dst, uint32_t x_size, uint32_t y_size, 
+								uint32_t src_offline, uint32_t dst_offline, uint32_t pixelformat);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

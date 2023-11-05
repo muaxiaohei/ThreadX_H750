@@ -35,6 +35,8 @@ LR_IROM1 0x90000000 0x00800000  {    	; load region size_region
 	; SRAM3 is commonly used for ETH
 	RW_IRAM5 0x30040000	0x00008000 {
 		*(.RAM_D5)
+		*(.RxDecripSection)
+		*(.TxDecripSection)
 	}
 	
 	; RW data - 64KB SRAM4(0x38000000)
@@ -47,11 +49,11 @@ LR_IROM1 0x90000000 0x00800000  {    	; load region size_region
 		*(.RAM_D7)
 	}
 	
-	RW_IRAM8 0xD0000000 UNINIT 0x02000000  {  ; RW data - 32MB SDRAM(0xD0000000)
+	RW_IRAM8 0xD0000000 UNINIT 0x02000000  {  ; RW data - 64MB SDRAM(0xD0000000)
 		*(.SDRAM)
 	}
-		
-	RW_IRAM9 0xD2000000 UNINIT 0x02000000  {  ; RW data - 32MB SDRAM(0xD2000000) using for ltdc
+	
+	RW_IRAM9 0xD2000000 UNINIT 0x02000000  {  ; RW data - 64MB SDRAM(0xD0000000)
 		*(.SDRAM_LTDC)
 	}
 }

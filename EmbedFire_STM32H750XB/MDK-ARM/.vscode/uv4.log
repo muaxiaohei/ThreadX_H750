@@ -1,0 +1,10 @@
+*** Using Compiler 'V6.19', folder: 'D:\Program\KEIL\ARM\ARMCLANG\Bin'
+Build target 'App'
+compiling main.c...
+linking...
+.\App.sct(51): warning: L6329W: Pattern *(.SDRAM) only matches removed unused sections.
+Program Size: Code=54988 RO-data=1496 RW-data=224 ZI-data=15576  
+Finished: 0 information, 1 warning and 0 error messages.
+FromELF: creating hex file...
+"App\App.axf" - 0 Error(s), 1 Warning(s).
+Build Time Elapsed:  00:00:02

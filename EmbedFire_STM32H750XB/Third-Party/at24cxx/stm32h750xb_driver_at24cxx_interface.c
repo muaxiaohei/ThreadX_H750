@@ -39,6 +39,7 @@
 #include "i2c.h"
 #include "usart.h"
 #include <stdarg.h>
+#include <tx_api.h>
 
 /**
  * @brief  interface iic bus init
@@ -137,7 +138,7 @@ uint8_t at24cxx_interface_iic_write_address16(uint8_t addr, uint16_t reg, uint8_
  */
 void at24cxx_interface_delay_ms(uint32_t ms)
 {
-    HAL_Delay(ms);
+    tx_thread_sleep(ms);
 }
 
 /**

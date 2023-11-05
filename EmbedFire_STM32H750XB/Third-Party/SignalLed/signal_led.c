@@ -13,8 +13,10 @@
 #include <math.h>
 
 static led_t *first_handle = NULL;
-static led_mem_opreation_t led_mem_operation = {
-    malloc, free};
+static led_mem_opreation_t led_mem_operation =
+{
+    malloc, free
+};
 
 //led 内部处理结构体
 typedef struct _led_internal
@@ -263,7 +265,7 @@ static void led_handle(led_t *crt_handle)
     if (led_internal_ptr->loop_temp)
     {
         led_internal_ptr->handle_cnt++;
-    __repeat:
+__repeat:
         if ((led_internal_ptr->handle_cnt - 1) == led_internal_ptr->blink_point)
         {
             if (led_internal_ptr->mode_pointer < led_internal_ptr->mode_cnt)

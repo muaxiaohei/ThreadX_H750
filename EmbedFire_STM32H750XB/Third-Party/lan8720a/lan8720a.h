@@ -8,7 +8,17 @@
 #ifdef __cplusplus
  extern "C" {
 #endif
- 
+
+/* Exported define -----------------------------------------------------------*/
+/** @defgroup LAN8720A_Registers_Mapping LAN8720A Registers Mapping
+  * @{
+  */ 
+#define LAN8720A_ADDR		0
+#define LAN8720A_TIMEOUT	500
+/**
+  * @}
+  */
+	 
 /** @defgroup LAN8720A_Registers_Mapping LAN8720A Registers Mapping
   * @{
   */ 
@@ -209,14 +219,16 @@
   */
 
 /* Exported types ------------------------------------------------------------*/ 
-typedef struct lan8720a_info_s
-{
-	uint16_t phy_addr;
-}lan8720a_info_t;
-
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions --------------------------------------------------------*/
-
+int lan8720a_init(void);
+int lan8720a_read_phy(uint16_t reg, uint32_t *regval);
+int lan8720a_write_phy(uint16_t reg, uint16_t value);
+void lan8720a_enable_powerdown_mode(void);
+void lan8720a_disable_powerdown_mode(void);
+void lan8720a_startautonego(void);  
+uint32_t lan8720a_getlinkstate(void);
+void lan8720a_setlinkstate(uint32_t linkstate);
 
 #ifdef __cplusplus
 }
