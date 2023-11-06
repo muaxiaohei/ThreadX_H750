@@ -17,6 +17,8 @@
                 "f:\\3.git\\1.Github\\ThreadX_H750\\EmbedFire_STM32H750XB\\Third-Party\\SignalLed",
                 "f:\\3.git\\1.Github\\ThreadX_H750\\EmbedFire_STM32H750XB\\Third-Party\\gt9xx",
                 "f:\\3.git\\1.Github\\ThreadX_H750\\EmbedFire_STM32H750XB\\Third-Party\\agile_modbus\\inc",
+                "f:\\3.git\\1.Github\\ThreadX_H750\\EmbedFire_STM32H750XB\\Third-Party\\ipc",
+                "f:\\3.git\\1.Github\\ThreadX_H750\\EmbedFire_STM32H750XB\\Third-Party\\lan8720a",
                 "D:\\Program\\KEIL\\ARM\\ARMCLANG\\include",
                 "D:\\Program\\KEIL\\ARM\\ARMCLANG\\include\\arm_linux",
                 "D:\\Program\\KEIL\\ARM\\ARMCLANG\\include\\arm_linux_compat",
@@ -31,8 +33,6 @@
             "defines": [
                 "USE_HAL_DRIVER",
                 "STM32H750xx",
-                "TX_PORT_USE_BASEPRI",
-                "TX_PORT_BASEPRI=240",
                 "TX_INCLUDE_USER_DEFINE_FILE",
                 "TX_EXECUTION_PROFILE_ENABLE",
                 "TX_CORTEX_M_EPK",

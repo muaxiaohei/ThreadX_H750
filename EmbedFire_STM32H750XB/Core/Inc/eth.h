@@ -42,7 +42,7 @@ extern ETH_HandleTypeDef heth;
 void MX_ETH_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-HAL_StatusTypeDef lan8720a_init(ETH_HandleTypeDef *heth);
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

@@ -202,21 +202,5 @@ void HAL_ETH_MspDeInit(ETH_HandleTypeDef* ethHandle)
 }
 
 /* USER CODE BEGIN 1 */
-/**
-  * @brief  Init LAN8720A
-  * @param  heth: ETH handle
-  * @retval HAL_StatusTypeDef£ºstatus value
-  */
-HAL_StatusTypeDef lan8720a_init(ETH_HandleTypeDef *heth)
-{
-	uint32_t phy_reg = 0, timeout = 0;
-	
-	/* 1.soft reset lan8720a */
-//	if(HAL_ETH_WritePHYRegister(heth, LAN8720A_PHY_ADDRESS, PHY_BCR, PHY_RESET) != HAL_OK)
-//	{
-//	
-//	}
-	
-	return HAL_OK;
-}
+
 /* USER CODE END 1 */

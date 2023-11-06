@@ -29,7 +29,7 @@ static uint8_t rtu_send_buf[MB_THREAD_STACK_SIZE];
 static uint8_t rtu_read_buf[MB_THREAD_STACK_SIZE];
 
 /* Private function prototypes -----------------------------------------------*/
-static void mb_thread_entry(ULONG thread_input)
+static void mb_thread_entry(ULONG thread_input)		// 此线程只负责解析是否有数据传入，数据的反序列化解析应该交给调用发送和解析的线程
 {
     uint8_t buf[MB_BUF_MAX_SIZE] = {0};
     uint8_t buf_pos = 0;

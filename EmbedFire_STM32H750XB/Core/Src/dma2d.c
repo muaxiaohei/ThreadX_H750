@@ -109,26 +109,26 @@ void HAL_DMA2D_MspDeInit(DMA2D_HandleTypeDef* dma2dHandle)
 void __dma2d_fill(void *dst, uint32_t x_size, uint32_t y_size,
                   uint32_t offline, uint32_t color, uint32_t pixelformat)
 {
-    /* DMA2D ²ÉÓÃ¼Ä´æÆ÷µ½´æ´¢Æ÷Ä£Ê½, ÕâÖÖÄ£Ê½ÓÃ²»µ½Ç°¾°²ãºÍ±³¾°²ã */
+    /* DMA2D ï¿½ï¿½ï¿½Ã¼Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½Ä£Ê½, ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½Ã²ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Í±ï¿½ï¿½ï¿½ï¿½ï¿½ */
     DMA2D->CR = (0x03UL << 16) | (1 << 9);
     DMA2D->OCOLR = color;
 
-    /* ÉèÖÃÌî³äµÄÑÕÉ«Ä¿µÄµØÖ· */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«Ä¿ï¿½Äµï¿½Ö· */
     DMA2D->OMAR    = (uint32_t)dst;
 
-    /* Ä¿µÄÐÐÆ«ÒÆµØÖ· */
+    /* Ä¿ï¿½ï¿½ï¿½ï¿½Æ«ï¿½Æµï¿½Ö· */
     DMA2D->OOR     = offline;
 
-    /* ÉèÖÃÑÕÉ«¸ñÊ½ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Ê½ */
     DMA2D->OPFCCR  = pixelformat;
 
-    /* ÉèÖÃÌî³ä´óÐ¡ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ */
     DMA2D->NLR     = (uint32_t)(x_size << 16) | (uint16_t)y_size;
 
-    /* Æô¶¯´«Êä */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     DMA2D->CR     |= DMA2D_CR_START;
 
-    /* µÈ´ýDMA2D´«ÊäÍê³É */
+    /* ï¿½È´ï¿½DMA2Dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     while (DMA2D->CR & DMA2D_CR_START);
 }
 
@@ -147,24 +147,24 @@ void __dma2d_fill(void *dst, uint32_t x_size, uint32_t y_size,
 void __dma2d_copy(void *src, void *dst, uint32_t x_size, uint32_t y_size,
                   uint32_t src_offline, uint32_t dst_offline, uint32_t pixelformat)
 {
-    /* DMA2D ²ÉÓÃ´æ´¢Æ÷µ½´æ´¢Æ÷Ä£Ê½, ÕâÖÖÄ£Ê½ÊÇÇ°¾°²ã×÷Îª DMA2D ÊäÈë */
+    /* DMA2D ï¿½ï¿½ï¿½Ã´æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½Ä£Ê½, ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª DMA2D ï¿½ï¿½ï¿½ï¿½ */
     DMA2D->CR = (0x00UL) | (1 << 9);
     DMA2D->FGMAR = (uint32_t)src;
     DMA2D->OMAR = (uint32_t)dst;
     DMA2D->FGOR = src_offline;
     DMA2D->OOR = dst_offline;
 
-    /* Ç°¾°²ãºÍÊä³öÇøÓò¶¼²ÉÓÃµÄ ARGB8888 ÑÕÉ«¸ñÊ½ */
+    /* Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò¶¼²ï¿½ï¿½Ãµï¿½ ARGB8888 ï¿½ï¿½É«ï¿½ï¿½Ê½ */
     DMA2D->FGPFCCR = pixelformat;
     DMA2D->OPFCCR = pixelformat;
 
     DMA2D->NLR = (uint32_t)(x_size << 16) | (uint16_t)y_size;
 	
 	SCB_CleanInvalidateDCache();
-    /* Æô¶¯´«Êä */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     DMA2D->CR     |= DMA2D_CR_START;
 
-    /* µÈ´ýDMA2D´«ÊäÍê³É */
+    /* ï¿½È´ï¿½DMA2Dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     while (DMA2D->CR & DMA2D_CR_START);
 }
 
@@ -184,7 +184,7 @@ void __dma2d_copy(void *src, void *dst, uint32_t x_size, uint32_t y_size,
 void __dma2d_mixcolorsbulk(void *src, void *dst, uint32_t x_size, uint32_t y_size,
                            uint32_t src_offline, uint32_t dst_offline, uint8_t alpha)
 {
-    /* DMA2D ²ÉÓÃ´æ´¢Æ÷µ½´æ´¢Æ÷Ä£Ê½, ÕâÖÖÄ£Ê½Ç°¾°²ãºÍ±³¾°²ã×÷Îª DMA2D ÊäÈë£¬ÇÒÖ§³ÖÑÕÉ«¸ñÊ½×ª»»ºÍÑÕÉ«»ìºÏ */
+    /* DMA2D ï¿½ï¿½ï¿½Ã´æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½Ä£Ê½, ï¿½ï¿½ï¿½ï¿½Ä£Ê½Ç°ï¿½ï¿½ï¿½ï¿½Í±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª DMA2D ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Ê½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ */
     DMA2D->CR = (0x02UL << 16) | (1 << 9);
     DMA2D->FGMAR = (uint32_t)src;
     DMA2D->BGMAR = (uint32_t)dst;
@@ -193,17 +193,17 @@ void __dma2d_mixcolorsbulk(void *src, void *dst, uint32_t x_size, uint32_t y_siz
     DMA2D->BGOR = dst_offline;
     DMA2D->OOR = dst_offline;
 
-    /* Ç°¾°²ã£¬±³¾°²ãºÍÊä³öÇø¶¼ÊÇÓÃµÄ ARGB8888 ¸ñÊ½ */
+    /* Ç°ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ ARGB8888 ï¿½ï¿½Ê½ */
     DMA2D->FGPFCCR = LTDC_PIXEL_FORMAT_ARGB8888 | (1UL << 16) | ((uint32_t)alpha << 24);
     DMA2D->BGPFCCR = LTDC_PIXEL_FORMAT_ARGB8888;
     DMA2D->OPFCCR = LTDC_PIXEL_FORMAT_ARGB8888;
 
     DMA2D->NLR = (uint32_t)(x_size << 16) | (uint16_t)y_size;
 
-    /* Æô¶¯´«Êä */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     DMA2D->CR     |= DMA2D_CR_START;
 
-    /* µÈ´ýDMA2D´«ÊäÍê³É */
+    /* ï¿½È´ï¿½DMA2Dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     while (DMA2D->CR & DMA2D_CR_START);
 }
 
@@ -223,7 +223,7 @@ void __dma2d_mixcolorsbulk(void *src, void *dst, uint32_t x_size, uint32_t y_siz
 void __dma2d_alphablendingbulk(void *fg_src, void *bg_src, void *dst, uint32_t x_size, uint32_t y_size,
                                uint32_t fg_offline, uint32_t bg_offline, uint32_t dst_offline)
 {
-    /* DMA2D ²ÉÓÃ´æ´¢Æ÷µ½´æ´¢Æ÷Ä£Ê½, ÕâÖÖÄ£Ê½Ç°¾°²ãºÍ±³¾°²ã×÷Îª DMA2D ÊäÈë£¬ÇÒÖ§³ÖÑÕÉ«¸ñÊ½×ª»»ºÍÑÕÉ«»ìºÏ */
+    /* DMA2D ï¿½ï¿½ï¿½Ã´æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½Ä£Ê½, ï¿½ï¿½ï¿½ï¿½Ä£Ê½Ç°ï¿½ï¿½ï¿½ï¿½Í±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª DMA2D ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Ê½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ */
     DMA2D->CR = (0x02UL << 16) | (1 << 9);
     DMA2D->FGMAR = (uint32_t)fg_src;
     DMA2D->BGMAR = (uint32_t)bg_src;
@@ -232,17 +232,17 @@ void __dma2d_alphablendingbulk(void *fg_src, void *bg_src, void *dst, uint32_t x
     DMA2D->BGOR = bg_offline;
     DMA2D->OOR = dst_offline;
 
-    /* Ç°¾°²ã£¬±³¾°²ãºÍÊä³öÇø¶¼ÊÇÓÃµÄ ARGB8888 ¸ñÊ½ */
+    /* Ç°ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ ARGB8888 ï¿½ï¿½Ê½ */
     DMA2D->FGPFCCR = LTDC_PIXEL_FORMAT_ARGB8888;
     DMA2D->BGPFCCR = LTDC_PIXEL_FORMAT_ARGB8888;
     DMA2D->OPFCCR = LTDC_PIXEL_FORMAT_ARGB8888;
 
     DMA2D->NLR = (uint32_t)(x_size << 16) | (uint16_t)y_size;
 
-    /* Æô¶¯´«Êä */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     DMA2D->CR     |= DMA2D_CR_START;
 
-    /* µÈ´ýDMA2D´«ÊäÍê³É */
+    /* ï¿½È´ï¿½DMA2Dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     while (DMA2D->CR & DMA2D_CR_START);
 }
 
@@ -261,7 +261,7 @@ void __dma2d_alphablendingbulk(void *fg_src, void *bg_src, void *dst, uint32_t x
 void __dma2d_drawalpha_bitmap(void *src, void *dst, uint32_t x_size, uint32_t y_size,
                               uint32_t src_offline, uint32_t dst_offline, uint32_t pixelformat)
 {
-    /* DMA2D ²ÉÓÃ´æ´¢Æ÷µ½´æ´¢Æ÷Ä£Ê½, ÕâÖÖÄ£Ê½Ç°¾°²ãºÍ±³¾°²ã×÷Îª DMA2D ÊäÈë£¬ÇÒÖ§³ÖÑÕÉ«¸ñÊ½×ª»»ºÍÑÕÉ«»ìºÏ */
+    /* DMA2D ï¿½ï¿½ï¿½Ã´æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½Ä£Ê½, ï¿½ï¿½ï¿½ï¿½Ä£Ê½Ç°ï¿½ï¿½ï¿½ï¿½Í±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª DMA2D ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Ê½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ */
     DMA2D->CR = (0x02UL << 16) | (1 << 9);
     DMA2D->FGMAR = (uint32_t)src;
     DMA2D->BGMAR = (uint32_t)dst;
@@ -270,17 +270,17 @@ void __dma2d_drawalpha_bitmap(void *src, void *dst, uint32_t x_size, uint32_t y_
     DMA2D->BGOR = dst_offline;
     DMA2D->OOR = dst_offline;
 
-    /* Ç°¾°²ãÑÕÉ«¸ñÊ½ÊÇ LTDC_PIXEL_FORMAT_ARGB8888£¬¼´Î»Í¼µÄÑÕÉ«¸ñÊ½£¬±³¾°²ãºÍÊä³öÇøÑÕÉ«¸ñÊ½¿ÉÅäÖÃ */
+    /* Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Ê½ï¿½ï¿½ LTDC_PIXEL_FORMAT_ARGB8888ï¿½ï¿½ï¿½ï¿½Î»Í¼ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     DMA2D->FGPFCCR = LTDC_PIXEL_FORMAT_ARGB8888;
     DMA2D->BGPFCCR = pixelformat;
     DMA2D->OPFCCR = pixelformat;
 
     DMA2D->NLR = (uint32_t)(x_size << 16) | (uint16_t)y_size;
 
-    /* Æô¶¯´«Êä */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     DMA2D->CR     |= DMA2D_CR_START;
 
-    /* µÈ´ýDMA2D´«ÊäÍê³É */
+    /* ï¿½È´ï¿½DMA2Dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     while (DMA2D->CR & DMA2D_CR_START);
 }
 /* USER CODE END 1 */
